@@ -1,0 +1,2 @@
+# SwiftBaseKnowledge-Sample
+Swiftの基礎文法などをまとめたリポジトリ

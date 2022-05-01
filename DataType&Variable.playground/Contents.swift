@@ -50,3 +50,76 @@ a+b// 二項演算子
 var `fallthrough` = 10
 
 // 型パラメータ
+// Int型の配列であるという宣言は通常はこちらの気泡を使う(わかりやすいため)
+var a1: [Int]
+// Int型の配列であるという宣言はこのようにも書ける
+var a2: Array<Int>
+
+// モジュールのインポート
+//import Cocoa // Cocoaフレームワークのインポート
+//import UIKit // UIKitフレームワークのインポート
+//import Foundation // 対話的に使うならFoundationだけで十分
+//import Darwin // Founcationのうち、OS関係のもの
+
+let val = 10032
+var i = 1, mask = 2
+while mask <= val {
+    mask <<= 1
+    i += 1
+    print(i)
+}
+
+// repeat while文
+// コラッツの問題
+// nが偶数の時は2で割る、奇数の時は3倍して1を足すという操作を繰り返すと
+// 必ず1に到達するという未解決問題
+var n = 7// 任意の正整数でよい
+repeat {
+    print("\(n)", terminator: ",")// 改行しない
+    if n % 2 == 0 {// nが偶数の時は
+        n /= 2// nを2で割る
+    } else {// nが奇数の時は
+        n = n * 3 + 1// nを3倍して1を足す
+    }
+} while n > 1// nが1以下になるまで、repeat文の中の処理を繰り返す
+print(n)
+
+// for-in文
+
+for i in 1..<5 {
+    print(i)// iの値は、1,2,3,4となって{}内を4回実行する
+}
+
+for k in 1...5 {
+    print(k)// kの値は、1,2,3,4,5となって{}内を5回実行する
+}
+// for-in文を使用して、九九の表を作成
+for i in 1 ..< 10 {// iにはletやvarは指定しない
+    var line = "" // 1行分の文字を蓄える
+    for j in 1 ..< 10 {
+        let n = i * j// varではなく、letでよい
+        if n < 10 {
+            line += " "//文字列を連結
+        }// if文
+        line += " \(n)"
+    }
+    print(line)
+}
+// for-in分にはオプションでwhere説を記述し、
+// その条件に当てはまるコードブロックを実行させる事が出来る
+// where節を使って、3と8の倍数を表示しないように指定
+for i in 1..<64 where i % 3 != 0 && i % 8 != 0 {
+    // printはデフォルトでは、文字列を出力したあとに改行されるが、
+    // printを改行したくない場合は、引数にterminatorを指定し、空文字("")を渡す
+    print(i, terminator: " ")// 数字と空白を改行せずに表示
+}
+print()// 改行だけ
+// 配列から一致する文字列を探す(for-in文)
+let name = "koko"
+let group: [String] = ["jonah", "visha", "koko", "valmet", "tenya"]
+for s in group {
+    if name == s {// group配列と一致した文字列のみを出力
+        print("\(s)が見つかりました")
+        break// 繰り返しをやめる
+    }
+}

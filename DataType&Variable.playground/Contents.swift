@@ -156,6 +156,7 @@ import UIKit
 //}
 
 // ラベル付きのループ文
+// ひと月のカレンダーを印字する
 let days = 31// 1ヶ月の日数
 let firstDay = 2// 1日目の曜日（0：日曜）
 var w = 0// 曜日のための変数
@@ -174,9 +175,48 @@ loop: while true {
 
         if d > days {// 月末になったら
             print()// 改行する
-            break loop// 外側のループから脱出
+            break loop// 外側のループから脱出 外側のループ ← loop
         }
     }
     print()// 週の終わり
     w = 0// 曜日を日曜に戻す
+}
+
+// ラベル付きのif文の例
+// うるう年は西暦年が4で割り切れ、かつ100で割り切れないか400で割り切れる年。
+// yearにさまざまな値(西暦)を代入してしたのif文を実行すると
+// うるう年かどうかの判定ができる
+let year = 1996
+leap: if year % 4 == 0 {
+    if year % 100 == 0{
+        if year % 400 == 0 {
+            print("\(year)年は400で割り切れるのでうるう年です")
+            break leap// 外側のif文(leap: if year % 4 == 0 )から抜ける
+        }// if year % 400 == 0
+        print("\(year)年は100で割り切れるのでうるう年ではありません")
+        break leap
+    }// if year % 100 == 0
+    print("\(year)年は4で割り切れるのでうるう年です")
+}else {
+    print("\(year)年は4で割り切れないのでうるう年ではありません")
+}
+
+// do文
+var a = 2
+var b = 1
+var c = 0
+if a >= 0 {
+    b = a
+    print(b)
+    do { let t = a; a = c; c = t }// 定数tはこのブロックだけに限定
+}
+
+let blood = "S"
+search: do {
+    for t in ["A", "B", "O", "AB"] {
+        if blood == t {
+            break search
+        }
+    }
+    print("見つかりませんでした")
 }

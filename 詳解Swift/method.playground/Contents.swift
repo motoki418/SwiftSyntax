@@ -73,3 +73,43 @@ func area3(_ h: Double, _ w: Double) -> Double {
 }
 let ar3 = area3(10.0, 12.5)
 print(ar3)
+
+// 仮引数の省略
+// 引数を設定しているものの、関数の処理ではその値を全く使わない事がある
+// その場合は、仮引数リストで引数名の代わりに下線「_」を指定する
+// 下記のメソッドだと第三引数を関数の処理で利用しない事がはっきり表現できる
+func compare(_ a: Int, _ b: Int, _: Bool) {
+    // この場合は、引数ラベルも設定されない
+}
+func compare1(_ a: Int, _ b: Int, option _: Bool) {
+    print("\(a), \(b)")
+}
+let co = compare1(10, 8, option: true)
+
+// 関数定義におけるさまざまな設定
+// inout引数
+// inout引数を使ったmySwap関数
+func mySwap(_ a: inout Int, _ b: inout Int) {
+    let t = a; a = b; b = t
+}
+var x = 100
+var y = 0
+mySwap(&x, &y)
+// 引数に規定値が指定された関数
+let fontSize: Float = 12.0
+func setFont(name: String, size: Float = fontSize, bold: Bool = false) {
+    print("\(name) \(size)" + (bold ? " [B]" : ""))
+}
+
+func setGray(level: Int = 255, _ alpha: Float = 1.0) {
+    print("Gray=\(level), Alpha = \(alpha)")
+}
+// 関数setFontは第1引数以外を省略できます
+setFont(name: "RaglanPunch")
+setFont(name: "Xourier", bold: true)
+setFont(name: "Times", size: 16.0, bold: true)
+// 関数setGrayは2つの引数を省略できるが、引数の順番は固定されている
+setGray()
+setGray(level: 240)
+setGray(level: 128, 0.5)
+

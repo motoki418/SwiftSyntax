@@ -58,3 +58,17 @@ let doubled = original.map({ value in value * 2})
 doubled
 
 // 演算を行う式
+27 * 31
+4.5 * 8.1
+let int = 37
+let double = 0.3
+Double(int) * double// Int型の変数intをDouble型に変換して演算を行う
+
+// 処理を呼び出す式
+// 関数を呼び出す式
+// max関数にInt型の2と7を引数として渡して呼び出し、戻り値の7が式の値として評価される
+max(2, 7)
+// イニシャライザを呼び出す式
+// String型のイニシャライザに、Int型の値4を渡して呼び出し、
+// Int型をString型に変換した結果である”4”を式の値として返している
+String(4)

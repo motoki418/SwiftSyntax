@@ -102,3 +102,80 @@ dictionary6
 var dictionary7 = ["key1": 1]
 dictionary7["key1"] = nil
 dictionary7
+
+
+// 範囲型
+// ..<演算子　末尾の値を含まない範囲を作る演算子
+// 1.0..<3.5は、1.0以上3.5未満という範囲を表す、Range<Double>型の値を生成する
+let range = 1..<4// CountableRange(1..<4)CountableRange<Int>型
+for value in range {
+    print(value)
+}
+
+// ...演算子 末尾の値を含む範囲を作る演算子
+// 1.0...3.5は、1.0以上3.5以下という範囲を表す、CloseRange<Double>型の値を生成する
+let range1 = 1...4// CountableClosedRange(1..<4)CountableClosedRange<Int>型
+for value in range1 {
+    print(value)
+}
+
+// 型推論
+// プレースホルダ型Boundは、両辺の値から型推論される
+let integerRange = 1..<3// CountableRange<Int>型
+type(of: integerRange)
+let doubleRange = 1.0..<3.0// Range<Double>型
+type(of: doubleRange)
+// 型アノテーションを用いて、両辺の値に関わらず、 Range<Float>型の値を生成
+let floatRange: Range<Float> = 1..<3// Range<Float>型
+type(of: floatRange)
+
+// 範囲型の基本的な操作
+// 境界の値へのアクセス
+let range2 = 1.0..<4.0// Range(1.0..<4.0)
+range2.lowerBound// 範囲の先頭の値
+range2.upperBound// 範囲の末尾の値
+
+let countableRange = 1..<4// CountableRange(1..<4)
+countableRange.lowerBound
+countableRange.upperBound
+
+let closedRange = 1.0...4.0// CloseRange(1.0...4.0)
+closedRange.lowerBound
+closedRange.upperBound
+
+let countableCloseRange = 1...4// countableCloseRange(1...4)
+countableRange.lowerBound
+countableRange.upperBound
+
+// 片側範囲の場合は、片方の境界にのみアクセスできる
+let rangeThrough = ...3.0// PartialRangeThrough(...3.0)
+rangeThrough.upperBound
+//rangeThrough.lowerBound// lowerBoundは存在しないためエラー
+let rangeUpTo = ..<3.0// PartialRangeUpTo(..<3.0)
+rangeUpTo.upperBound
+//rangeUpTo.lowerBound// lowerBoundは存在しないためエラー
+
+let rangeFrom = 3.0...// PartialRangeFrom(3.0...)
+rangeFrom.lowerBound
+//rangeFrom.upperBound// upperBoundは存在しないためエラー
+
+let countableRangeFrom = 3...//CountablePartialRangeFrom(3...)
+countableRangeFrom.lowerBound
+//countableRangeFrom.upperBound// upperBoundは存在しないためエラー
+
+// 値が範囲に含まれるかどうかの判定
+// contains(_:)メソッドはBound型の値を受け取り、値が範囲に含まれているかどうかを、
+// Bool型の値として返却する
+let range3 = 1...4// CountableClosedRange(1...4)
+range3.contains(2)// true
+range3.contains(5)
+
+// コレクションとしてのString型
+// Character型　文字を表す型
+// "a"のような単一の文字を表す型
+let string = "a"
+type(of: string)
+let character: Character = "a"
+type(of: character)
+
+//String.Index型 文字列ないの位置を表す型

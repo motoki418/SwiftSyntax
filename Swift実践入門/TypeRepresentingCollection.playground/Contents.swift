@@ -178,4 +178,100 @@ type(of: string)
 let character: Character = "a"
 type(of: character)
 
-//String.Index型 文字列ないの位置を表す型
+//String.Index型 文字列内の位置を表す型
+let string1 = "abc"
+let startIndex = string1.startIndex
+type(of: startIndex)
+let endIndex = string1.endIndex
+type(of: endIndex)
+let string2 = "abc"
+let character1 = string1[string1.startIndex]
+
+// 二番目の文字を取得する
+// index(_:offsetBy)メソッドは、
+// コレクション.index(元になるインデックス、offsetBy: ずらす数)という書式で利用する
+let string3 = "abc"
+let bIndex = string3.index(string3.startIndex, offsetBy: 1)
+// 最後の文字を取得する
+// 最後の文字から-1することで最後の文字を取得できる
+//let cIndex = string3[string3.endIndex]// これは実行時エラーになる
+let cIndex = string3.index(string3.endIndex, offsetBy: -1)
+
+let string4 = "abc"
+// 文字数のカウント
+string4.count
+
+// 要素の列挙
+// for-in文を用いて、全ての要素に順次アクセス
+for character in string4 {
+    print(character)
+}
+
+// シーケンスとコレクションを扱うためのプロトコル
+// Sequenceプロトコル　要素への順次アクセス
+
+// forEach(_:)メソッド　要素に対して順次アクセスする
+// 配列arrayの要素にアクセスし、その値を順次配列enumratedに追加する
+let array2 = [1, 2, 3, 4, 5,6]
+var enumerated = [] as [Int]
+array2.forEach({ element in enumerated.append(element) })
+enumerated
+
+//filter(_:)メソッド　要素を絞り込む
+// [Int]型の配列array3の要素のうち、2の倍数のものだけを含む、配列filterdを生成する
+let array3 = [1, 2, 3, 4, 5, 6]
+let filtered = array3.filter({ element in element % 2 == 0})
+filtered
+
+// map(_:)メソッド　要素を変換する
+// [Int]型の配列array4の各要素を、2倍にした配列doubledを生成する
+let array4 = [1, 2, 3, 4, 5, 6]
+let doubled = array4.map({ element in element * 2})
+doubled
+
+// map(_:)メソッドを用いて、別の型のシーケンスへと変換することもできる
+//[Int]型の配列array5を、[String]型の配列convetedに変換
+let array5 = [1, 2, 3, 4, 5, 6]
+let conveted = array5.map({ element in String(element)})
+conveted
+
+// flatMap(_:)メソッド　要素をシーケンスに変換し、それを1つのシーケンスに変換する
+// 元々の要素と、それに1を足した値を含む配列を返却している
+// 要素1を[1,2]、要素4を[3,4]、要素7を[7,8]へと変換している
+let array6 = [1, 4, 7]
+let array7 = array6.flatMap({ value in [value, value + 1] })
+array7
+// 上記の処理をmap(_:)メソッドに置き換えると、値が配列に二重に包まれた[[Int]]型になる
+let array8 = [1, 4, 7]
+let array9 = array8.map({ value in [value, value + 1] })
+array9
+
+// compactMap(_:)メソッド　要素を失敗する可能性のある処理を用いて変換する
+// Int型に変換できる要素のみを配列integers6に格納する
+let strings6 = ["abc", "123", "def", "456"]
+let integers6 = strings6.compactMap({ value in Int(value) })
+integers6
+type(of: integers6)
+
+// reduce(_:_:)メソッド　要素を1つの値にまとめる
+// 配列array10の要素を足し合わせ、定数sumにInt型の値21を代入している
+let array10 = [1, 2, 3, 4, 5, 6]
+let sum = array10.reduce(0, { result, element in result + element})
+sum
+// 配列array10の要素を文字列にして連結し、
+// String型の値"123456"を定数concatに代入している
+let concat = array10.reduce("", { result, element in result + String(element) })
+concat
+
+// Collectionプロトコル　サブスクリプトによる要素へのアクセス
+let array11 = [1, 2, 3, 4, 5, 6]
+// サブスクリプトによる要素へのアクセス　指定した要素の読み書きを行う
+array11[3]
+// isEmptyプロパティ　コレクションが空かどうかを判定する
+array11.isEmpty
+// countプロパティ　要素の個数を取得する
+array11.count
+// firstプロパティ 最初の要素を取得する
+array11.first
+// lastプロパティ 最後の要素を取得する
+array11.last

@@ -121,4 +121,15 @@ func greet3(user: String) -> Void {
 }
 greet2(user: "Nakamura")
 
-// コンパイラによる戻り値チェック
+// 暗黙的なreturn
+func makeMessage(toUser user: String) -> String {
+    // 暗黙的なreturnが有効となるのは、関数の実装が戻り値の返却のみの場合。
+    "Hello: \(user)"
+}
+makeMessage(toUser: "Nakamura")
+func makeMessage1(toUser user: String) -> String {
+    print(user)
+    // "Hello: \(user)"// 戻り値を返却する式として認識されなくなる。returnが必要
+}
+
+// クロージャ　スコープ内の変数や定数を保持したひとまとまりの処理

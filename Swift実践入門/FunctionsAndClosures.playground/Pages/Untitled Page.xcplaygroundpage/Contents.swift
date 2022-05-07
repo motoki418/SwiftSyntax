@@ -126,10 +126,60 @@ func makeMessage(toUser user: String) -> String {
     // 暗黙的なreturnが有効となるのは、関数の実装が戻り値の返却のみの場合。
     "Hello: \(user)"
 }
-makeMessage(toUser: "Nakamura")
-func makeMessage1(toUser user: String) -> String {
-    print(user)
-    // "Hello: \(user)"// 戻り値を返却する式として認識されなくなる。returnが必要
-}
+//makeMessage(toUser: "Nakamura")
+//func makeMessage1(toUser user: String) -> String {
+//     print(user)
+//     "Hello: \(user)"// 戻り値を返却する式として認識されなくなる。returnが必要
+//}
 
 // クロージャ　スコープ内の変数や定数を保持したひとまとまりの処理
+// Int型の引数を1つ取り、それを2倍にしたInt型の戻り値を返す、
+// (Int) -> Int型のクロージャを定義して実行。
+let double1 = { (x: Int) -> Int in// (Int) -> Int型
+    return x * 2
+}
+double1(2)
+type(of: double1)
+// クロージャの方は通常の方と同じように扱えるので、
+// 変数や関数の引数の型として利用することもできる。
+let closure: (Int) -> Int
+func someFunction4(x: (Int) -> Int) {}
+
+// 型推論
+//  (String) -> Int型の変数
+// 変数closure1の型は(String) -> Intと明確に決まっているため、
+// 変数に代入するクロージャの型も(String) -> Int型であると推論できるため、
+// 変数closure1に代入する引数と戻り値の型は省略することが出来る。
+var closure1: (String) -> Int
+
+// 引数と戻り値の型を明示した場合
+closure1 = { (string: String) -> Int in// (String) -> Int型
+    return string.count
+}
+closure1("abc")
+
+// 引数と戻り値の方を省略した場合
+closure1 = { string in
+    return string.count * 2
+}
+closure1("abc")
+type(of: closure1)
+
+// 実行方法
+// 関数と同じでクロージャが代入されている変数名や定数名の末尾に()をつけ、
+// ()内に引数を,区切りで並べる。
+// (string(引数名): String(型)) -> Int(戻り値の型)
+// in キーワードの後ろが実行される文
+let lengthOfString = { (string: String) -> Int in // (String) -> Int型
+    return string.count// 要素をカウントする
+}
+// 定数lengthOfStringは型推論で(String) -> Int型と推論される。
+lengthOfString("I contain 23 characters")
+type(of: lengthOfString)
+
+// 引数
+// 引数名を省略して(2, 3)のように呼び出す。
+let add = { (x: Int, y: Int) -> Int in// (Int, Int) -> Int型
+    return x + y
+}
+add(2, 3)

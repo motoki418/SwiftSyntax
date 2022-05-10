@@ -94,7 +94,7 @@ struct Greeting2 {
     static let signature = "Sent from iPhone"
     // スタティックプロパティにはイニシャライザに相当する初期化のタイミングがないため、
     // 宣言時に必ず初期値を持たせる必要がある。
-//    static let signature1: String// 値を持っていないためエラー
+    //    static let signature1: String// 値を持っていないためエラー
 
     // 宛先
     var to = "Motoki Nakamura"
@@ -231,9 +231,9 @@ struct Temperture {
         }
         // セッタで暗黙的に宣言されたnewValueには、()内に定数名を追加する事で、
         // 任意の名前を与える事ができる。
-//        set(newFahrenheit) {
-//            celsius = (5.0 / 9.0) * (newFahrenheit - 32.0)
-//        }
+        //        set(newFahrenheit) {
+        //            celsius = (5.0 / 9.0) * (newFahrenheit - 32.0)
+        //        }
     }
 }
 //
@@ -403,3 +403,245 @@ struct Greeting13 {
 }
 
 // メソッド　型に紐付いた関数
+// 呼び出すには、型のインスタンスが代入された変数や定数に.とメソッド名をつけて
+// 変数名.メソッド名と書く。引数がある場合は、()内に,区切りでならべる。
+struct Greeting14 {
+    func greet(user: String) -> Void {
+        print("Hello: \(user)")
+    }
+}
+
+let greeting14 = Greeting14()// 変数greeting14にGreeting14型のインスタンスを代入
+greeting14.greet(user: "Motoki Nakamura")// 変数名.メソッド名でメソッドを呼び出す
+
+// 紐付く対象による分類
+// インスタンスメソッド　型のインスタンスに紐付くメソッド
+struct SomeStruct8 {
+    var value = 0
+
+    func printValue() {
+        print("value: \(self.value)")
+    }
+}
+// それぞれのインスタンスに応じた値が出力される。
+var someStruct8 = SomeStruct8()
+someStruct8.value = 1
+someStruct8.printValue()
+
+var someStruct9 = SomeStruct8()
+someStruct9.value = 2// インスタンス.プロパティ名
+someStruct9.printValue()// インスタンス.メソッド名でメソッドの呼び出し
+
+// スタティックメソッド　型自身に紐付くメソッド
+// インスタンスに依存しない処理に使う。
+struct Greeting15 {
+    // スタティックストアドプロパティ　型自身に紐付くプロパティ
+    static var signature = "Sent from iPhone"
+
+    // withDevicenameが外部引数名　diviceNameが内部引数名
+    static func setSignature(withDevicename deviceName: String) {
+        signature = "Sent from \(deviceName)"
+    }
+
+    var to = "Motoki Nakamura"
+    var body: String {
+        // 変数signatureは型自身に紐付くプロパティなので、
+        // 型名.プロパティ名でアクセスする。
+        return "Hello, \(to)!\n\(Greeting15.signature)"
+    }
+}
+let greeting15 = Greeting15()
+print(greeting15.body)
+print("-----")
+// setSignature()メソッドは型自身に紐付くメソッドなので、型名.メソッド名で呼び出す。
+// Xperiaを引数に渡してsignatureプロパティの値をSent from Xperiaに更新している。
+Greeting15.setSignature(withDevicename: "Xperia")
+print(greeting15.body)
+
+// オーバーロード　型が異なる同名のメソッドの定義
+// 引数によるオーバーロード
+// 引数によってメソッドをオーバーロードするには引数の型が異なる同名のメソッドを複数定義する
+struct Printer {
+    // String型の引数を取るput(_:)メソッド
+    func put(_ value: String) {
+        print("string: \(value)")
+    }
+
+    // Int型の引数を取るput(_:)メソッド
+    func put(_ value: Int) {
+        print("int: \(value)")
+    }
+}
+let printer = Printer()// インスタンスを生成し、変数に代入
+// 引数の型によって実行されるメソッドが切り替わっている。
+printer.put("abc")// String型のput(_:)メソッドを呼び出し
+printer.put(123)// Int型のput(_:)メソッドを呼び出し
+
+// 戻り値によるオーバーロード
+// 戻り値によってメソッドをオーバーロードするには、戻り値の型が異なる、
+// 同名のメソッドを複数定義する
+struct ValueContainer {
+    let stringValue = "abc"
+    let intValue = 123
+
+    // String型の戻り値を持つメソッド
+    func getValue() -> String {
+        return stringValue
+    }
+
+    // Int型の戻り値を持つメソッド
+    func getValue() -> Int {
+        return intValue
+    }
+}
+let valueContainer = ValueContainer()
+// 戻り値の代入先の定数の型によって、実行されるメソッドが切り替わっている。
+// 戻り値の代入先の型アノテーションは省略できない。
+let string: String = valueContainer.getValue()
+let int: Int = valueContainer.getValue()
+
+
+// サブスクリプト　コレクションの要素へのアクセス
+// 数列を表すProgression型
+struct Progression {
+    var numbers: [Int]
+
+    // subscript(引数) -> 戻り値の型
+    subscript(index: Int) -> Int {
+        // 値の取得時にはゲッタが呼び出される。
+        get {
+            // return文によって値を返す処理
+            return numbers[index]
+        }
+        // 変数名[引数] = 新しい値のようにして、
+        // 値が代入される時にはセッタが呼び出される。
+        set {
+            // 値を更新する処理
+            numbers[index] = newValue
+        }
+    }
+}
+var progression = Progression(numbers: [1, 2, 3])
+// 値の取得　この時にはゲッタが呼び出される。
+let element1 = progression[1]// 配列numbersの2番目の要素にアクセス
+// 新しい値を代入　この時にはセッタが呼び出される。
+progression[1] = 4
+// 値の取得　この時にはゲッタが呼び出される。
+let element2 = progression[1]
+
+// 引数が複数ある場合
+// 行列を表すMatrix型
+struct Matrix {
+    var rows: [[Int]]
+
+    subscript(row: Int, column: Int) -> Int{
+        get {
+            return rows[row][column]
+        }
+
+        set {
+            rows[row][column] = newValue
+        }
+    }
+}
+let matrix = Matrix(rows: [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
+// 外部引数名はデフォルトで_となるため。[1, 1]のように行列内の要素にアクセス出来る。
+// 値の取得　この時にはゲッタが呼び出される。
+let element = matrix[1, 1]// 2番目の配列の、2つ目の要素へのアクセス。
+
+// セッタの省略
+// コンピューテッドプロパティと同様にサブスクリプトでも、セッタの定義は省略出来る。
+struct Progression1 {
+    var numbers: [Int]
+
+    // サブスクリプトのセッタを削除し、getキーワードと{}も省略している。
+    subscript(index: Int) -> Int {
+        return numbers[index]
+    }
+}
+var progression1 = Progression1(numbers: [1, 2, 3, 4])
+// 外部引数名はデフォルトで_となるため。[2]のように配列内の要素にアクセス出来る。
+// 値の取得　この時にはゲッタが呼び出される。
+progression1[2]
+
+// Cannot assign through subscript: subscript is get-only
+// 添え字を介して割り当てられない：添え字は取得専用です。
+// progression1[2] = 5// セッタが定義されていないため値の更新は出来ない。
+
+
+// エクステンション　型の拡張
+// エクステンションで追加したメソッドは、通常のメソッドと同様に使用できる。
+// String型を拡張して、printSelf()メソッドを追加している。
+extension String {// extension エクステンションを定義する対象の型
+    // 対象の方に追加したい要素
+    func printSelf() {
+        print(self)
+    }
+}
+let string1 = "abc"
+string1.printSelf()
+
+// コンピューテッドプロパティの追加
+// String型に【 】(隅付きかっこ)で囲んだ値を返す、
+// コンピューテッドプロパティenclesedStringを追加している。
+extension String {
+    var enclosedString: String {
+        return "【\(self)】"
+    }
+}
+let title = "重要".enclosedString + "今日は休み"
+
+
+// 型のネスト 型の中に型を定義できる。
+// ニュースフィードのアイテムを表すNewsFeedItem型と、
+// その種類を表すNewsFeedItemKind型があったとする。
+enum NewsFeedItemKind {
+    case a
+    case b
+    case c
+}
+
+struct NewsFeedItem {
+    let id: Int
+    let title: String
+    let type: NewsFeedItemKind
+}
+// 上記はNewsFeedItemKind型はNewsFeedItem型の種類を表していることは推測できるが、
+// 命名で縛っているに過ぎない。
+// NewsFeedItemKind型をNewsFeedItem1型の中にネストさせてKindにリネームすると、
+// NewFeedItem1.Kind型となる。
+struct NewsFeedItem1 {
+    enum kind {
+        case a
+        case b
+        case c
+    }
+    // 初期値を持たないため、イニシャライザ内で初期化する必要がある。
+    let id: Int
+    let title: String
+    let kind: kind
+
+    init(id: Int, title: String, kind: kind) {
+        // self.toはプロパティの値を指し、toは引数の値を指す。
+        self.id = id
+        // self.titleはプロパティの値を指し、titleは引数の値を指す。
+        self.title = title
+        // self.kindはプロパティの値を指し、kindは引数の値を指す。
+        self.kind = kind
+    }
+}
+// 列挙体Kindのa
+// NewsFeedItem1.kind型はNewsFeedItemKind型と比べると、NewsFeedItem型との
+// 関連性がより明確になっている。
+let kind = NewsFeedItem1.kind.a
+// 引数kindには、定数kindの値を渡す
+let item = NewsFeedItem1(id: 1, title: "Table", kind: kind)
+switch item.kind {
+case .a: print("kind is a")
+case .b: print("kind is b")
+case .c: print("kind is c")
+}

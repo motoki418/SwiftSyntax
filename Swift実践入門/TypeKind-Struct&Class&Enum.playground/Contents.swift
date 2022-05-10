@@ -1,5 +1,6 @@
 import UIKit
 import CoreGraphics
+import Foundation
 
 // 型の種類　構造他・クラス列挙型
 // 値の受け渡し方法による分類
@@ -69,7 +70,7 @@ b3.value
 
 
 // 構造体　値型のデータ構造
-// プロパティやメソッド、イニシャライザなどの方を構成する要素は構造体で全て利用可能
+// プロパティやメソッド、イニシャライザなどの型を構成する要素は構造体で全て利用可能
 struct Article {
 
     // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
@@ -181,3 +182,382 @@ noSubject.body
 let greeting = Mail(subject: "Greeting", body: "Hello!")
 greeting.subject
 greeting.body
+
+
+// クラス　参照型のデータ構造
+// プロパティやメソッド、イニシャライザなどの型を構成する要素は構造体で全て利用可能
+struct SomeClass {
+
+    // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
+    let id: Int
+    let name: String
+
+    init(id: Int, name: String) {
+        // self.idはプロパティの値を指し、idは引数を指す。
+        self.id = id
+        // self.nameプロパティの値を指し、titleは引数を指す。
+        self.name = name
+    }
+
+    func printName() {
+        print(name)
+    }
+}
+let instance = SomeClass(id: 1, name: "name")
+instance.printName()
+
+// 継承　型の構成要素の引き継ぎ
+// 新たなクラスを定義する時に、他のクラスのプロパティ、メソッド、イニシャライザなどの
+// 型を再利用する仕組み
+
+class User {
+    // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
+    let id: Int
+
+    // コンピューテッドプロパティ
+    var message: String {
+        return "Hello."
+    }
+
+    init(id: Int) {
+        // self.idはプロパティの値を指し、idは引数を指す。
+        self.id = id
+    }
+
+    func printProfile() {
+        print("id: \(id)")
+        print("message: \(message)")
+    }
+}
+
+print("-----")
+
+// Userクラスを継承したクラス
+//　Userクラスで定義されているid,messageプロパティ、printProfile()メソッドが利用可能
+class RegisteredUser: User {
+    // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
+    let name: String
+
+    init(id: Int, name: String) {
+        // self.nameはプロパティの値を指し、nameは引数を指す。
+        self.name = name
+        // 継承元のUserクラスで宣言している定数idの初期化
+        super.init(id: id)
+    }
+}
+let registeredUser = RegisteredUser(id: 1, name: "Motoki Nakamura")
+let id = registeredUser.id
+let message = registeredUser.message
+registeredUser.printProfile()
+
+// オーバーライド　型の構成要素の再定義
+// スーパークラスで定義されているプロパティやメソッドなどの要素は、
+// サブクラスで再定義することができる。
+// インスタンスプロパティとクラスプロパティのみ可能
+class User1 {
+
+    let id: Int
+
+    var message: String {
+        return "Hello!"
+    }
+
+    init(id: Int) {
+        self.id = id
+    }
+    //
+    func printProfile() {
+        print("id: \(id)")
+        print("message: \(message)")
+    }
+}
+print("-----")
+
+class RegisteredUser1: User1 {
+
+    let name: String
+
+    // コンピューテッドプロパティmessageをオーバーライドして再定義
+    // override var プロパティ名: 型名
+    override var message: String {
+        // return文によって値を返す処理
+        return "Hello, my name is \(name)"
+    }
+
+    init(id: Int, name: String) {
+        // self.nameはプロパティの値を指し、nameは引数を指す。
+        self.name = name
+        // 継承元のUserクラスで宣言している定数idの初期化
+        super.init(id: id)
+    }
+
+    override func printProfile() {
+        // superキーワードでスーパークラスの実装を利用出来る。
+        // スーパークラスのprintProfile()とRegisteredUser1クラスの
+        // printProfile()を組み合わせて３つのプロパティの値を出力
+        super.printProfile()
+        print("name: \(name)")
+    }
+}
+let user1 = User1(id: 1)
+// User1クラスではidとmessageプロパティの値のみ出力　id, message
+user1.printProfile()
+print("-----")
+
+
+let registeredUser1 = RegisteredUser1(id: 2, name: "Motoki Nakamura")
+// RegisteredUser1クラスではスーパークラス(User1)のidとmessageに加えて、
+// nameプロパティの値も出力している。　id, message, name
+registeredUser1.printProfile()
+print("-----")
+
+// finalキーワード　継承とオーバーライドの禁止
+class SuperClass {
+    // サブクラスでオーバーライド可能
+    func overridableMethod() {}
+
+    // finalキーワードとともに定義しているため、サブクラスでオーバーライド不可能
+    final func finalMethod() {}
+}
+class SubClass: SuperClass {
+    // オーバーライド可能
+    override func overridableMethod() {}
+    // オーバーライド不可能なためエラー
+    //override func finalMethod() {}
+}
+
+// クラス自体にfinalキーワードを付与することで、そのクラスを継承したクラス定義を禁止できる
+// 継承可能
+class InheritableClass {}
+// 継承可能
+class ValidSbuClass: InheritableClass {}
+
+final class FinalClass {}
+// 継承不可能なためエラー
+// class InvalidSubClass: FinalClass {}
+
+// クラスに紐付く要素
+// クラスプロパティ　クラス自身に紐付くプロパティ
+// 型自身に紐付くスタティックプロパティと性質が似ている
+// インスタンスに依存しない値を扱う場合に利用する
+class A {
+    // プロパティ宣言の先頭にclassキーワードを付ける。
+    class var className: String {
+        // 型名を返す
+        return "A"
+    }
+}
+// Aクラスを継承
+class B: A {
+    // AクラスのclassNameプロパティをオーバーライドしている。
+    override class var className: String {
+        // 型名を返す
+        return "B"
+    }
+}
+A.className// 型名.クラスプロパティ名でアクセスする
+B.className
+
+// クラスメソッド　クラス自身に紐付くメソッド
+// 型自身に紐付くスタティックメソッドと性質が似ている
+// インスタンスに依存しない処理を実装する場合に利用する
+class C {
+    // クラスの継承関係を表現するメソッド
+    class func ingeritanceHierarchy() -> String {
+        return "C"
+    }
+}
+// Cクラスを継承
+class D: C {
+    // スーパークラスのメソッドを呼び出し、自身のクラス名を追記して返す
+    override class func ingeritanceHierarchy() -> String {
+        // superキーワードでスーパークラスの実装を利用する
+        return super.ingeritanceHierarchy() + "<-D"
+    }
+}
+
+class E: D {
+    // スーパークラスのメソッドを呼び出し、自身のクラス名を追記して返す
+    override class func ingeritanceHierarchy() -> String {
+        // superキーワードでスーパークラスの実装を利用する
+        return super.ingeritanceHierarchy() + "<-E"
+    }
+}
+C.ingeritanceHierarchy()
+D.ingeritanceHierarchy()
+E.ingeritanceHierarchy()
+
+// スタティックプロパティ、スタティックメソッドとの使い分け
+class F {
+    // 継承先で変更されるべきなのでクラスプロパティとして定義
+    class var className: String {
+        return "F"
+    }
+    // 継承元のクラス名を返すスタティックプロパティ
+    // 継承先でも同じ値であるべきなのでスタティックプロパティとして定義
+    static var baseClassName: String {
+        return "F"
+    }
+}
+// Fクラスを継承
+class G: F {
+    // FクラスのclassNameプロパティをオーバーライド
+    override class var className: String {
+        return "G"
+    }
+
+    // スタティックプロパティはオーバーライドできないのでエラー
+//    override static var baseClassName: String {
+//        return "F"
+//    }
+}
+F.className
+G.className
+
+F.baseClassName
+G.baseClassName
+
+// イニシャライザの種類と初期化のプロセス
+// イニシャライザの役割は型のインスタンス化の完了までに全てのプロパティを初期化し、
+// 型の整合性を保つこと。
+
+// 指定イニシャライザ　主となるイニシャライザ
+// クラスの主となるイニシャライザで、このイニシャライザの中で全ての
+// ストアドプロパティが初期化されている必要がある。
+class Mail1 {
+    // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
+    let from: String
+    let to: String
+    let title: String
+
+    // 指定イニシャライザ
+    init(from: String, to: String, title: String) {
+        self.from = from
+        self.to = to
+        self.title = title
+    }
+}
+
+// コンビニエンスイニシャライザ　指定イニシャライザをラップするイニシャライザ
+// 指定イニシャライザを中継するイニシャライザで、内部で引数を組み立てて、
+// 指定イニシャライザを呼び出す必要がある。
+class Mail2 {
+    // 初期値を定義していないため、イニシャライザ内で初期化する必要がある。
+    let from: String
+    let to: String
+    let title: String
+
+    // 指定イニシャライザ
+    init(from: String, to: String, title: String) {
+        self.from = from
+        self.to = to
+        self.title = title
+    }
+
+    // コンビニエンスイニシャライザ convenienceキーワード
+    convenience init(from: String, to: String) {
+        self.init(from: from, to: to, title: "Hello, \(from)")
+    }
+}
+
+// デフォルトイニシャライザ　プロパティの初期化が不要な場合に定義されるイニシャライザ
+class User2 {
+    // 全てのプロパティが初期値を持っている場合は、指定イニシャライザ内で初期化しなくて良い
+    let id = 0
+    let name = "Taro"
+
+    // 以下と同等のイニシャライザが自動的に定義される。デフォルトの指定イニシャライザ
+    // init() {}
+}
+let user2 = User2()
+user2.id
+user2.name
+
+class User3 {
+    // 1つでも指定イニシャライザ内で初期化が必要なプロパティが存在する場合、
+    // デフォルトイニシャライザinit()は無くなり、指定イニシャライザを定義する必要がある
+    let id: Int
+    let name: String
+
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+}
+let user3 = User3(id: 1, name: "Taro")
+user3.id
+user3.name
+
+
+// 列挙型　複数の識別子をまとめる型
+// Optional<Wrapped>型は列挙型
+enum Weekday {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+}
+// 列挙型名.ケース名のようにケース名を指定して、インスタンス化する
+// .sundayと.mondayをインスタンス化している
+let sunday = Weekday.sunday
+let monday = Weekday.monday
+
+// イニシャライザを定義して、インスタンス化することも出来る。
+enum Weekday1 {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+
+    // イニシャライザを追加し、引数に渡された文字列に応じて各ケースをselfに代入している
+    init?(japaneseName: String) {
+        switch japaneseName {
+        case "日": self = .sunday
+        case "月": self = .monday
+        case "火": self = .tuesday
+        case "水": self = .wednesday
+        case "木": self = .thursday
+        case "金": self = .friday
+        case "土": self = .saturday
+        default: return nil
+        }
+    }
+}
+// 引数に渡した文字列に応じてインスタンス化している。
+let sunday1 = Weekday1(japaneseName: "日")
+let monday1 = Weekday1(japaneseName: "月")
+
+enum Weekday2 {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+
+    // 列挙型はコンピューテッドプロパティのみ持つことができる。
+    var name: String {
+        switch self {
+        case .sunday: return "日"
+        case .monday: return "月"
+        case .tuesday: return "火"
+        case .wednesday: return "水"
+        case .thursday: return "木"
+        case .friday: return "金"
+        case .saturday: return "土"
+
+        }
+    }
+}
+let weekday2 = Weekday2.monday
+let name = weekday2.name
+
+// ローバリュー　実態の定義
+

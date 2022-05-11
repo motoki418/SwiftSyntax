@@ -1,6 +1,7 @@
 import UIKit
 import CoreGraphics
 import Foundation
+import Darwin
 
 // 型の種類　構造他・クラス列挙型
 // 値の受け渡し方法による分類
@@ -559,5 +560,110 @@ enum Weekday2 {
 let weekday2 = Weekday2.monday
 let name = weekday2.name
 
-// ローバリュー　実態の定義
+// ローバリュー　実体の定義
+// 列挙型のケースにはそれぞれ対応する値 = ローバーリューを設定できる。
 
+// Character型のローバリューを設定
+enum Symbol: Character {
+    case sharp = "#"
+    case dollar = "$"
+    case percent = "%"
+}
+let symbol = Symbol(rawValue: "#")// sharp
+let character = symbol?.rawValue// "#"
+
+// ローバリューのデフォルト値
+// Int型のローバーリューのデフォルト値は最初のケースが0で、それ以降は
+// 前のケースの値に1を足した値になる。
+enum Option: Int {
+    // undefined以外はデフォルト値が自動的に設定される。
+    case none
+    case one
+    case two
+    case undefined = 999
+}
+Option.none.rawValue
+Option.one.rawValue
+Option.two.rawValue
+Option.undefined.rawValue
+
+// String型のローバーリューのデフォルト値は、ケース名をそのまま文字列にした値
+enum Direction: String {
+    case north
+    case ease
+    case south
+    case west
+}
+Direction.north.rawValue
+Direction.ease.rawValue
+Direction.south.rawValue
+Direction.west.rawValue
+
+// 連想値　付加情報の付与
+// 列挙型のインスタンスごとに違う値を持たせたい場合に役立つ
+enum Color1 {
+    // 色の表現方法をケース、数値を連想値として表現
+    case rgb(Float, Float, Float)//　()の中が連想値
+    case cmyk(Float, Float, Float, Float)
+}
+// インスタンス生成
+let rgb = Color1.rgb(0.0, 0.33, 0.66)
+let cmyk = Color1.cmyk(0.0, 0.33, 0.66, 0.99)
+
+let color = Color1.rgb(0.0, 0.33, 0.66)
+// switch文を使用して列挙型から連想地を取り出す。
+switch color {
+case .rgb(let r, let g, let b):
+    print("r: \(r), g: \(g), b: \(b)")
+case .cmyk(let c, let m, let y, let k):
+    print("c: \(c), m: \(m), y: \(y), k: \(k)")
+}
+
+// CaseIterableプロトコル　要素列挙のプロトコル
+// 全てのケースを配列で取得する際に準拠させるプロトコル
+enum Fruit: CaseIterable {
+    case peach, apple, grape
+}
+// 列挙型をCaseIterableプロトコルに準拠させると、自動的に
+// allCasesスタティックプロパティが追加され、このプロパティが列挙型の全ての要素を返す。
+Fruit.allCases// allCasesプロパティから全要素[peach, apple, grape]を取得
+
+// コンパイラによるallCasesプロパティの自動生成
+// allCasesプロパティを自分で実装した場合は下のコードのようになる。
+// ただCaseIterableプロトコルに準拠させた場合は、自明な実装をコンパイラが肩代わりし、
+// コードの自動生成をしてくれるので、自分で実装する必要はない。
+enum Fruit1: CaseIterable {
+    case peach, apple, grape
+
+    static var allCases: [Fruit1] {
+        return[
+            .peach,
+            .apple,
+            .grape
+
+        ]
+    }
+}
+Fruit1.allCases
+
+// allCasesプロパティのコードが自動生成されない条件
+// 列挙型が連想地を持つ場合は、allCasesプロパティの実装は自動生成されない。
+enum Fruit2: CaseIterable {
+    // .appleがAppleColor型の連想値を持つためallCasesプロパティを実装
+case peach, apple(color: AppleColor), grape
+
+    static var allCases: [Fruit2] {
+        return [
+            .peach,
+            .apple(color: .red),
+            .apple(color: .green),
+            .grape
+        ]
+    }
+}
+
+enum AppleColor {
+    case green, red
+}
+
+Fruit2.allCases

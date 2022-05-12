@@ -338,3 +338,149 @@ stringRandom.randomValue()
 stringRandom.randomValue()
 
 // 型制約の追加
+class SomeClass2 {}
+
+protocol SomeProtocol13 {
+    // SomeProtocol13プロトコルに準拠する
+    associatedtype Associatedtype: SomeClass2
+}
+
+class SomeSubClass: SomeClass2 {}
+// SomeSubClassはSomeClass2のサブクラスなのでAssociatedtypeの制約を満たす
+struct ConforomedStruct: SomeProtocol13 {
+    typealias Associatedtype = SomeSubClass
+}
+
+// IntはSomeClass2のサブクラスではないのでエラー
+//struct NonConformedStruct: SomeProtocol13 {
+//    typealias Associatedtype = Int
+//}
+
+
+// プロトコルの継承
+protocol ProtocolA {
+    var id: Int { get }
+}
+protocol ProtocolB {
+    var title: String { get }
+}
+// ProtocolCは、id,titleの2つを要求するプロトコルとなる。
+// ProtocolAとProtocolBを継承するプロトコル
+protocol ProtocloC: ProtocolA, ProtocolB {}
+
+// クラス専用プロトコル 準拠する型をクラスのみに限定できる。
+// 準拠する型が参照型であることを想定する場合に使用する。
+// protocol SomeClassOnlyProtocol: class, プロトコル名{}
+
+// プロトコルエクステンション　プロトコルの実装の定義
+// エクステンションはプロトコルにも定義できる。
+protocol Item {
+    var name: String { get }
+    var category: String { get }
+}
+// Itemプロトコルに変数descriptionの実装を追加する
+extension Item {
+    var description: String {
+        return "商品名: \(name), カテゴリ: \(category)"
+    }
+}
+
+// Itemプロトコルを継承
+struct Book: Item {
+    let name: String
+
+    var category: String {
+        return "書籍"
+    }
+}
+// インスタンスを生成
+let book = Book(name: "Swift実践入門")
+print(book.description)
+
+// Itemプロトコルを継承
+//struct Book1: Item {
+//    // エラーメッセージ
+//    // 「Type 'Book1' does not conform to protocol 'Item'」
+//    //　タイプ 'Book1' はプロトコル 'Item' に適合していません。
+//    // Itemプロトコルが要求しているnameプロパティを、実装していないためエラー。
+//    // let name: String
+//
+//    var category: String {
+//        return "書籍"
+//    }
+//}
+
+// デフォルト実装による実装の任意化
+// デフォルト実装を与えて実装を任意化することにより、標準的な機能を提供しつつも、
+// カスタマイズの余地を与える事が可能となる。
+protocol Item1 {
+    var name: String { get }
+    var caution: String? { get }
+}
+
+extension Item1 {
+    // caucionプロパティにデフォルト実装を定義
+    var caution: String? {
+        return nil
+    }
+
+    var description: String {
+        var description = "商品名: \(name)"
+        // オプショナルString型のcautionプロパティをアンラップ
+        if let caution = caution {
+            description += ", 注意事項: \(caution)"
+        }
+        return description
+    }
+}
+// Item2プロトコルに準拠する型ではcautionプロパティを必ずしも実装する必要はない。
+struct Book1: Item1 {
+    let name: String
+
+    var caution: String? {
+        return "プライム配送の対象ではありません"
+    }
+}
+
+struct Fish: Item1 {
+    let name: String
+
+    var caution: String? {
+        return "クール便での配送となります"
+    }
+}
+
+let book1 = Book1(name: "Swift実践入門")
+print(book1.description)
+print(book1.name)
+// 警告
+// Expression implicitly coerced from 'String?' to 'Any'
+// 式が暗黙のうちに 'String?' から 'Any' に強制される
+print(book1.caution)
+
+let fish = Fish(name: "秋刀魚")
+print(fish.description)
+print(fish.name)
+// 警告
+// Expression implicitly coerced from 'String?' to 'Any'
+// 式が暗黙のうちに 'String?' から 'Any' に強制される
+print(fish.caution)
+
+// 型制約の追加
+// extension　プロトコル名　where　型制約　{
+//     制約を満たす場合に有効となるエクステンション
+//}
+
+// Collectionプロトコルの連想型ElementがInt型と一致する場合にのみ、
+// 利用可能となるクステンションを定義し、sumeプロパティで各要素の合計を返す
+extension Collection where Element == Int {
+    var sum: Int {
+        return reduce(0) { return $0 + $1}
+    }
+}
+let integers = [1, 2, 3]
+integers.sum// 要素の合計
+
+let strings = ["a", "b", "c"]
+// stringsの要素はInt型ではないため、sumeプロパティは利用できない。
+// strings.sum// エラー

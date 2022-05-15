@@ -60,7 +60,7 @@ let someStruct3 = SomeStruct3()// SomeStruct3型をインスタンス化
 someStruct3.printSharedValue()
 
 
-// プロパティ　肩に紐付いた値
+// プロパティ　型に紐付いた値
 // プロパティとは型に紐付いた値の事で、型が表すものの属性や表現などに使用される。
 // 定義方法
 struct SomeStruc4 {
@@ -320,7 +320,7 @@ struct Item {
 let dictionaries: [[String: Any]] = [
     ["id": 1, "title": "abc"],
     ["id": 2, "title": "def"],
-    ["title": "abc"], // idがかけている辞書 Item型の初期化が失敗
+    ["title": "abc"], // idが欠けている辞書 Item型の初期化が失敗
     ["id": 3, "title": "jkl"]
 ]
 

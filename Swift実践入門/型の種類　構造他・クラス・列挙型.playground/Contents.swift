@@ -3,7 +3,7 @@ import CoreGraphics
 import Foundation
 import Darwin
 
-// 型の種類　構造他・クラス列挙型
+// 型の種類　構造他・クラス・列挙型
 // 値の受け渡し方法による分類
 // 値型　値を表す型　構造体と列挙型
 var a = 4.0 // aに4.0が入る

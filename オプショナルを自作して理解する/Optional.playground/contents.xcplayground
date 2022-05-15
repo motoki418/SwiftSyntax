@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1.  型とはなにか'/>
+        <page name='2. 数字で血液型の種類を表してみる'/>
+        <page name='3. enumで種類を表す'/>
+        <page name='4. enumで関連した値を表す'/>
+        <page name='5. enumの関連した値を取り出す '/>
+        <page name='6. 値のあるなしをenumで表す'/>
+        <page name='7. 任意の型を扱える型'/>
+    </pages>
+</playground>

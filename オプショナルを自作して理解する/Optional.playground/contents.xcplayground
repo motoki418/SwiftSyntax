@@ -8,5 +8,13 @@
         <page name='5. enumの関連した値を取り出す '/>
         <page name='6. 値のあるなしをenumで表す'/>
         <page name='7. 任意の型を扱える型'/>
+        <page name='8. 「あるかも」を任意の型で表す'/>
+        <page name='9. Optionalのコードを見てみる'/>
+        <page name='10. switchを楽に書く'/>
+        <page name='11. a!をswitchで書く'/>
+        <page name='12. nilで初期化できるようにする'/>
+        <page name='13. Tで初期化出来るようにする'/>
+        <page name='14. 比較できる型を作る'/>
+        <page name='15. nilで比較できるようにする'/>
     </pages>
 </playground>

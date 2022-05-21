@@ -4,10 +4,10 @@ import Combine
 // Combineフレームワーク
 // 値を出力するパブリッシャーと値を受け取るサブスクライバーの二つがある
 
-// 整数型の値を出力するパブリッシャー
+// 整数型の値を出力するパブリッシャー　Just
 let publisher = Just(100)
 
-// 整数の値を受け取るサブスクライバー
+// 整数の値を受け取るサブスクライバー　Sink
 let subscriber = Subscribers.Sink<Int,Never>(receiveCompletion: {
     completion in
     switch completion {

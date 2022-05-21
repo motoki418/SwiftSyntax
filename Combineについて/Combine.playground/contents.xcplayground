@@ -3,5 +3,7 @@
     <pages>
         <page name='２. オペレーター'/>
         <page name='1. Combineフレームワークの超シンプルな例'/>
+        <page name='3. Notification'/>
+        <page name='Combine初心者講座 -SwiftUIの相棒を使いこなそう-'/>
     </pages>
 </playground>

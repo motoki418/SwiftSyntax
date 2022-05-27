@@ -14,4 +14,3 @@ Swiftの基礎文法や、ライブラリなどの使用方法を学習しまと
 
 [Swiftによるアプリ開発のためのThe Composable Architectureがすごく良いので紹介したい](https://qiita.com/yimajo/items/77c204ab091223f9cb14)
 
-[the Composable Architecture の始め方](https://qiita.com/zeero/items/b77cb689d9a707d94ac7#tca%E3%81%A3%E3%81%A6%E4%BD%95)

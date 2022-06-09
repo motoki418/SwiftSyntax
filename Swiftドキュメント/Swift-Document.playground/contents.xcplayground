@@ -6,5 +6,7 @@
         <page name='基本演算子'/>
         <page name='文字と文字列(Strings and Characters)'/>
         <page name='コレクション型(Collection Types) '/>
+        <page name='制御フロー(Control Flow)'/>
+        <page name='関数(Functions)'/>
     </pages>
 </playground>

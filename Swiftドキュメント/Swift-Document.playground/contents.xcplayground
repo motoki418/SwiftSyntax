@@ -8,5 +8,6 @@
         <page name='コレクション型(Collection Types) '/>
         <page name='制御フロー(Control Flow)'/>
         <page name='関数(Functions)'/>
+        <page name='クロージャ(Closures)'/>
     </pages>
 </playground>

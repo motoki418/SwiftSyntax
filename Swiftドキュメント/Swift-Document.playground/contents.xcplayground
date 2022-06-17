@@ -10,5 +10,7 @@
         <page name='関数(Functions)'/>
         <page name='列挙型(Enumerations)'/>
         <page name='クロージャ(Closures)'/>
+        <page name='構造体とクラス'/>
+        <page name='プロパティ(Properties).xcplaygroundpage'/>
     </pages>
 </playground>

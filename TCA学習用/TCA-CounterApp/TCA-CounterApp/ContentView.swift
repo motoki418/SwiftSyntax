@@ -5,10 +5,10 @@
 //  Created by nakamura motoki on 2022/06/16.
 //
 
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
-let readMe = """
+private let readMe = """
   This screen demonstrates the basics of the Composable Architecture in an archetypal counter \
   application.
 
@@ -82,14 +82,14 @@ struct CounterDemoView: View {
     let store: Store<CounterState, CounterAction>
 
     var body: some View {
-        Form {
-            Section(header: Text(readMe)) {
-                CounterView(store: self.store)
-                    .buttonStyle(.borderless)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Form {
+                Section(header: Text(readMe)) {
+                    CounterView(store: self.store)
+                        .buttonStyle(.borderless)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
-        }
-        .navigationBarTitle("Counter Demo")
+            .navigationBarTitle("Counter Demo")
     }
 }
 struct CounterView_Previews: PreviewProvider {

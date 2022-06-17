@@ -12,12 +12,10 @@ import ComposableArchitecture
 struct TCA_CounterAppApp: App {
     var body: some Scene {
         WindowGroup {
-            CounterView(
-                store: Store(
-                    initialState: CounterState(),
-                    reducer: counterReducer,
-                    environment: CounterEnvironment()
-                )
+            RootView(store: .init(
+                initialState: RootState(),
+                reducer: rootReducer,
+                environment: RootEnvironment())
             )
         }
     }

@@ -1,15 +1,15 @@
 //
-//  TCA_CounterAppApp.swift
-//  TCA-CounterApp
+//  TCA_CaseStudiesApp.swift
+//  TCA-CaseStudies
 //
-//  Created by nakamura motoki on 2022/06/16.
+//  Created by nakamura motoki on 2022/06/18.
 //
 
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 @main
-struct TCA_CounterAppApp: App {
+struct TCA_CaseStudiesApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(store: .init(

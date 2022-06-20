@@ -7,6 +7,8 @@
 // 参考文献
 // The Composable Architecture（TCA）のカウンターサンプルを理解する
 //　https://bamboo-hero.com/entry/tca-counter-sample
+// [SwiftUI]TCAを理解する：基礎
+// https://zenn.dev/chiii/articles/e63cb466d49a13
 import ComposableArchitecture
 import SwiftUI
 
@@ -29,6 +31,9 @@ enum CounterAction: Equatable {
 
 struct CounterEnvironment {}
 
+// ReducerではActionをSwitch文で分けStateに値を更新していきます。
+// それと同時にTCAの独特な概念として、実行すべきEffectを各Actionでreturnします。
+// Effectについてはこのカウンターアプリでは.noneを返しており、これはEmptyのEffectのことです。
 let counterReducer = Reducer<CounterState, CounterAction, CounterEnvironment> {
     state, action, _ in
     switch action {
@@ -44,9 +49,16 @@ let counterReducer = Reducer<CounterState, CounterAction, CounterEnvironment> {
 }
 
 struct CounterView: View {
-    // ViewStoreはstateというプロパティを持っていて、こいつの実体はCounterStateのインスタンスです。なので、viewStore.state.countという感じで参照することが可能です。
+    // ViewStoreはstateというプロパティを持っていて、こいつの実体はCounterStateのインスタンスです。
+    // なので、viewStore.state.countという感じで参照することが可能です。
     let store: Store<CounterState, CounterAction>
 
+    // ここでSwiftUIのViewでStoreを参照できるよう、WithViewStoreを使用します。
+    // これ自体はSwiftUIのViewを返しているのでViewとなります。
+    // WithViewStoreの引数にbodyの外で定義したStoreを渡すことで、
+    // viewStore型でクロージャ内で使用することが出来ます。
+    // このviewStoreに変換する意味合いとしては、
+    // UIからのイベントをsendメソッドでActionとして送ることが出来ます。
     var body: some View {
         WithViewStore(self.store) { viewStore in
             // ViewStore.sendというメソッドでアクション（CounterAction.incrementButtonTapped）を通知すると、
@@ -59,7 +71,7 @@ struct CounterView: View {
                     viewStore.send(.decrementButtonTapped)
                 } label: {
                     Text("-")
-                }
+                }// Button
                 // ビュー側ではText("\(viewStore.count)")という形でcountを参照しています。
 
 
@@ -74,9 +86,9 @@ struct CounterView: View {
                     viewStore.send(.incrementButtonTapped)
                 } label: {
                     Text("+")
-                }
-            }
-        }
+                }// Button
+            }// HStack
+        }// WithViewStore
     }
 }
 

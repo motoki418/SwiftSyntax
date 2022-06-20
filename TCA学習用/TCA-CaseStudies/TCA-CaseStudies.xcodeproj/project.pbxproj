@@ -11,10 +11,12 @@
 		365FEDEE285D502700DD993C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDED285D502700DD993C /* RootView.swift */; };
 		365FEDF0285D504400DD993C /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDEF285D504400DD993C /* Core.swift */; };
 		365FEDF2285D505200DD993C /* Two-Counters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF1285D505200DD993C /* Two-Counters.swift */; };
+		365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF3285D761B00DD993C /* Bindings-Basic.swift */; };
+		365FEDF7285FFA5700DD993C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 365FEDF6285FFA5700DD993C /* ComposableArchitecture */; };
+		365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF828603DD700DD993C /* Bindings-Forms.swift */; };
 		36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */; };
 		36C81778285D4BC1000C9CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C81777285D4BC1000C9CE4 /* Assets.xcassets */; };
 		36C8177B285D4BC1000C9CE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8177A285D4BC1000C9CE4 /* Preview Assets.xcassets */; };
-		36C81783285D4C20000C9CE4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 36C81782285D4C20000C9CE4 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		365FEDED285D502700DD993C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		365FEDEF285D504400DD993C /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		365FEDF1285D505200DD993C /* Two-Counters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Two-Counters.swift"; sourceTree = "<group>"; };
+		365FEDF3285D761B00DD993C /* Bindings-Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindings-Basic.swift"; sourceTree = "<group>"; };
+		365FEDF828603DD700DD993C /* Bindings-Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindings-Forms.swift"; sourceTree = "<group>"; };
 		36C81770285D4BBF000C9CE4 /* TCA-CaseStudies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-CaseStudies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_CaseStudiesApp.swift; sourceTree = "<group>"; };
 		36C81777285D4BC1000C9CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36C81783285D4C20000C9CE4 /* ComposableArchitecture in Frameworks */,
+				365FEDF7285FFA5700DD993C /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +66,8 @@
 				36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */,
 				365FEDEB285D4FFB00DD993C /* Counter.swift */,
 				365FEDF1285D505200DD993C /* Two-Counters.swift */,
+				365FEDF3285D761B00DD993C /* Bindings-Basic.swift */,
+				365FEDF828603DD700DD993C /* Bindings-Forms.swift */,
 				365FEDED285D502700DD993C /* RootView.swift */,
 				365FEDEF285D504400DD993C /* Core.swift */,
 				36C81777285D4BC1000C9CE4 /* Assets.xcassets */,
@@ -95,7 +101,7 @@
 			);
 			name = "TCA-CaseStudies";
 			packageProductDependencies = (
-				36C81782285D4C20000C9CE4 /* ComposableArchitecture */,
+				365FEDF6285FFA5700DD993C /* ComposableArchitecture */,
 			);
 			productName = "TCA-CaseStudies";
 			productReference = 36C81770285D4BBF000C9CE4 /* TCA-CaseStudies.app */;
@@ -126,7 +132,7 @@
 			);
 			mainGroup = 36C81767285D4BBF000C9CE4;
 			packageReferences = (
-				36C81781285D4C20000C9CE4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				365FEDF5285FFA5700DD993C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 36C81771285D4BBF000C9CE4 /* Products */;
 			projectDirPath = "";
@@ -156,8 +162,10 @@
 			files = (
 				365FEDEC285D4FFB00DD993C /* Counter.swift in Sources */,
 				36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */,
+				365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */,
 				365FEDF2285D505200DD993C /* Two-Counters.swift in Sources */,
 				365FEDF0285D504400DD993C /* Core.swift in Sources */,
+				365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */,
 				365FEDEE285D502700DD993C /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +369,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		36C81781285D4C20000C9CE4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		365FEDF5285FFA5700DD993C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:pointfreeco/swift-composable-architecture.git";
 			requirement = {
@@ -372,9 +380,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		36C81782285D4C20000C9CE4 /* ComposableArchitecture */ = {
+		365FEDF6285FFA5700DD993C /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 36C81781285D4C20000C9CE4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			package = 365FEDF5285FFA5700DD993C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */

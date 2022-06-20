@@ -17,18 +17,40 @@ struct RootView: View {
             NavigationView {
                 Form {
                     Section(header: Text("Getting started")) {
-                        NavigationLink("Basics",
-                                       destination: CounterDemoView(
-                                        store: self.store.scope(
-                                            state: \.counter,
-                                            action: RootAction.counter)
-                                       )
+                        NavigationLink(
+                            "Basics",
+                            destination: CounterDemoView(
+                                store: self.store.scope(
+                                    state: \.counter,
+                                    action: RootAction.counter)
+                            )
                         )
-                        NavigationLink("Pullback and combine", destination: TwoCountersView(
-                            store: self.store.scope(
-                                state: \.twoCounters,
-                                action: RootAction.twoCounters)
+
+                        NavigationLink(
+                            "Pullback and combine",
+                            destination: TwoCountersView(
+                                store: self.store.scope(
+                                    state: \.twoCounters,
+                                    action: RootAction.twoCounters)
+                            )
                         )
+
+                        NavigationLink(
+                            "Bindings",
+                            destination: BindingsBasicsView(
+                                store: self.store.scope(
+                                    state: \.bindingBasics,
+                                    action: RootAction.bindingsBasics)
+                            )
+                        )
+
+                        NavigationLink(
+                            "Form bindings",
+                            destination: BindingFormView(
+                                store: self.store.scope(
+                                    state: \.bindingForm,
+                                    action: RootAction.bindingForm)
+                            )
                         )
                     }
                 }

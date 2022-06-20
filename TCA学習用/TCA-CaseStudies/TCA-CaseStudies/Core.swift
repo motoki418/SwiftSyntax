@@ -13,11 +13,15 @@ import XCTestDynamicOverlay
 struct RootState {
     var counter = CounterState()
     var twoCounters = TwoCounterState()
+    var bindingBasics = BindingBasicsState()
+    var bindingForm = BindingFormState()
 }
 
 enum RootAction {
     case counter(CounterAction)
     case twoCounters(TwoCountersAction)
+    case bindingsBasics(BindingBaseicsAction)
+    case bindingForm(BindingFormAction)
     case onAppear
 }
 
@@ -39,14 +43,32 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 state: \.counter,
                 action: /RootAction.counter,
                 environment:  { _ in .init() }
-        ),
+            ),
         twoCountersReducer
             .pullback(
                 state: \.twoCounters,
                 action: /RootAction.twoCounters,
                 environment: { _ in .init() }
-            )
+            ),
+        bindingBasicsReducer
+            .pullback(
+                state: \.bindingBasics,
+                action: /RootAction.bindingsBasics,
+                environment: { _ in .init() }
+            ),
+        .init { state, action, environment in
+            return
+              bindingFormReducer
+              .pullback(
+                state: \.bindingForm,
+                action: /RootAction.bindingForm,
+                environment: { _ in .init() }
+              )
+              .run(&state, action, environment)
+        }
     )
+// .debug()でデバッグできる
+// stateの変更前後がgitみたいに-と+でコンソールに表示される
     .debug()
     .signpost()
 

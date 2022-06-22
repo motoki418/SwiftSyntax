@@ -14,6 +14,9 @@
 		365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF3285D761B00DD993C /* Bindings-Basic.swift */; };
 		365FEDF7285FFA5700DD993C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 365FEDF6285FFA5700DD993C /* ComposableArchitecture */; };
 		365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF828603DD700DD993C /* Bindings-Forms.swift */; };
+		365FEDFB28604D1100DD993C /* OptionalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDFA28604D1000DD993C /* OptionalState.swift */; };
+		36B17F712862E7AE0040423D /* SharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17F702862E7AE0040423D /* SharedState.swift */; };
+		36B17F732862F97D0040423D /* NavigateAndLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17F722862F97D0040423D /* NavigateAndLoad.swift */; };
 		36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */; };
 		36C81778285D4BC1000C9CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C81777285D4BC1000C9CE4 /* Assets.xcassets */; };
 		36C8177B285D4BC1000C9CE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8177A285D4BC1000C9CE4 /* Preview Assets.xcassets */; };
@@ -26,6 +29,9 @@
 		365FEDF1285D505200DD993C /* Two-Counters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Two-Counters.swift"; sourceTree = "<group>"; };
 		365FEDF3285D761B00DD993C /* Bindings-Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindings-Basic.swift"; sourceTree = "<group>"; };
 		365FEDF828603DD700DD993C /* Bindings-Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindings-Forms.swift"; sourceTree = "<group>"; };
+		365FEDFA28604D1000DD993C /* OptionalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalState.swift; sourceTree = "<group>"; };
+		36B17F702862E7AE0040423D /* SharedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedState.swift; sourceTree = "<group>"; };
+		36B17F722862F97D0040423D /* NavigateAndLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateAndLoad.swift; sourceTree = "<group>"; };
 		36C81770285D4BBF000C9CE4 /* TCA-CaseStudies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-CaseStudies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_CaseStudiesApp.swift; sourceTree = "<group>"; };
 		36C81777285D4BC1000C9CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +74,9 @@
 				365FEDF1285D505200DD993C /* Two-Counters.swift */,
 				365FEDF3285D761B00DD993C /* Bindings-Basic.swift */,
 				365FEDF828603DD700DD993C /* Bindings-Forms.swift */,
+				365FEDFA28604D1000DD993C /* OptionalState.swift */,
+				36B17F722862F97D0040423D /* NavigateAndLoad.swift */,
+				36B17F702862E7AE0040423D /* SharedState.swift */,
 				365FEDED285D502700DD993C /* RootView.swift */,
 				365FEDEF285D504400DD993C /* Core.swift */,
 				36C81777285D4BC1000C9CE4 /* Assets.xcassets */,
@@ -162,9 +171,12 @@
 			files = (
 				365FEDEC285D4FFB00DD993C /* Counter.swift in Sources */,
 				36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */,
+				36B17F732862F97D0040423D /* NavigateAndLoad.swift in Sources */,
 				365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */,
 				365FEDF2285D505200DD993C /* Two-Counters.swift in Sources */,
 				365FEDF0285D504400DD993C /* Core.swift in Sources */,
+				365FEDFB28604D1100DD993C /* OptionalState.swift in Sources */,
+				36B17F712862E7AE0040423D /* SharedState.swift in Sources */,
 				365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */,
 				365FEDEE285D502700DD993C /* RootView.swift in Sources */,
 			);

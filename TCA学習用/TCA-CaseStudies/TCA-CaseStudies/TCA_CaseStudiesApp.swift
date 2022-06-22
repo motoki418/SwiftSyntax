@@ -15,7 +15,7 @@ struct TCA_CaseStudiesApp: App {
             RootView(store: .init(
                 initialState: RootState(),
                 reducer: rootReducer,
-                environment: RootEnvironment())
+                environment: .live)
             )
         }
     }

@@ -52,6 +52,27 @@ struct RootView: View {
                                     action: RootAction.bindingForm)
                             )
                         )
+
+                        NavigationLink(
+                            "Optional state",
+                            destination: OptionalBasicsView(
+                                store: self.store.scope(
+                                    state: \.optionalBasics,
+                                    action: RootAction.optionalBasics)
+                            )
+                        )
+
+                        Section(header: Text("Navigation")) {
+                            NavigationLink(
+                                "Navigation and load data",
+                                destination: NavigateAndLoadView(
+                                    store: self.store.scope(
+                                        state: \.navigateAndLoad,
+                                        action: RootAction.navigateAndLoad
+                                    )
+                                )
+                            )
+                        }
                     }
                 }
                 .navigationTitle("Case Studies")

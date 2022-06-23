@@ -1,4 +1,4 @@
-# SwiftBaseKnowledge-Sample
+# SwiftBasics
 Swiftの基礎文法や、ライブラリなどの使用方法を学習しまとめたリポジトリ
 
 # 参考文献

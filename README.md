@@ -19,3 +19,7 @@ Swiftの基礎文法や、ライブラリなどの使用方法を学習しまと
 [The Composable Architecture（TCA）のカウンターサンプルを理解する](https://bamboo-hero.com/entry/tca-counter-sample)
 
 [The Composable Architecture（TCA）のサンプルからComposableなArchitectureを学ぶ](https://bamboo-hero.com/entry/learn-composable-architecture-from-tca-sample)
+
+[[SwiftUI]TCAを理解する：基礎](https://zenn.dev/search?q=TCA)
+
+[ComposableArchitecture Documentation](https://pointfreeco.github.io/swift-composable-architecture/#structures)

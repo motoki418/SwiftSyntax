@@ -62,23 +62,40 @@ struct RootView: View {
                             )
                         )
 
-                        Section(header: Text("Navigation")) {
-                            NavigationLink(
-                                "Navigation and load data",
-                                destination: NavigateAndLoadView(
-                                    store: self.store.scope(
-                                        state: \.navigateAndLoad,
-                                        action: RootAction.navigateAndLoad
-                                    )
+                        NavigationLink(
+                            "Shared state",
+                            destination: SharedStateView(
+                                store: self.store.scope(
+                                    state: \.shared,
+                                    action: RootAction.shared
                                 )
                             )
-                        }
+                        )
                     }
-                }
+
+                    Section(header: Text("Navigation")) {
+                        NavigationLink(
+                            "Navigation and load data",
+                            destination: NavigateAndLoadView(
+                                store: self.store.scope(
+                                    state: \.navigateAndLoad,
+                                    action: RootAction.navigateAndLoad
+                                )
+                            )
+                        )
+
+                        NavigationLink("Load data then navigate", destination: LoadThenNavigateView(store: self.store.scope(
+                            state: \.loadThenNavigate,
+                            action: RootAction.loadThenNavigate
+                        )
+                        )
+                        )
+                    }// Navigation
+                }// Form
                 .navigationTitle("Case Studies")
                 .onAppear { viewStore.send(.onAppear)}
-            }
-        }
+            }// NavigationView
+        }// WithViewStore
     }
 }
 

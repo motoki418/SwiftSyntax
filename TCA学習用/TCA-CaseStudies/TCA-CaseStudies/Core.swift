@@ -17,6 +17,8 @@ struct RootState {
     var bindingForm = BindingFormState()
     var optionalBasics = OptionalBasicsState()
     var navigateAndLoad = NavigateAndLoadState()
+    var loadThenNavigate = LoadThenNavigateState()
+    var shared = SharedState()
 }
 
 enum RootAction {
@@ -26,6 +28,8 @@ enum RootAction {
     case bindingForm(BindingFormAction)
     case optionalBasics(OptionalBasicsAction)
     case navigateAndLoad(NavigatiteAndLoadAction)
+    case loadThenNavigate(LoadThenNavigateAction)
+    case shared(SharedStateAction)
     case onAppear
 }
 
@@ -76,9 +80,9 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                     environment: { _ in .init() }
                 )
                 .run(&state, action, environment)
-        #else
+#else
             return .none
-        #endif
+#endif
         },
         optionalBassicsReducer
             .pullback(
@@ -91,6 +95,18 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 state: \.navigateAndLoad,
                 action: /RootAction.navigateAndLoad,
                 environment: { .init(mainQueue: $0.mainQueue) }
+            ),
+        loadThenNavigateReducer
+            .pullback(
+                state: \.loadThenNavigate,
+                action: /RootAction.loadThenNavigate,
+                environment: { .init(mainQueue: $0.mainQueue) }
+            ),
+        sharedStateReducer
+            .pullback(
+                state: \.shared,
+                action: /RootAction.shared,
+                environment: { _ in () }
             )
     )
 // .debug()でデバッグできる

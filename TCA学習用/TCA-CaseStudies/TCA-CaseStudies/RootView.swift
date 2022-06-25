@@ -71,6 +71,16 @@ struct RootView: View {
                                 )
                             )
                         )
+
+                        NavigationLink(
+                            "Alert and confirmation dialog",
+                            destination: AlertAndConfirmationDialogView(
+                                store: self.store.scope(
+                                    state: \.alertAndConfirmationDialog,
+                                    action: RootAction.alertAndConfimatinDialog
+                                )
+                            )
+                        )
                     }
 
                     Section(header: Text("Navigation")) {
@@ -84,10 +94,11 @@ struct RootView: View {
                             )
                         )
 
-                        NavigationLink("Load data then navigate", destination: LoadThenNavigateView(store: self.store.scope(
-                            state: \.loadThenNavigate,
-                            action: RootAction.loadThenNavigate
-                        )
+                        NavigationLink("Load data then navigate", destination: LoadThenNavigateView(
+                            store: self.store.scope(
+                                state: \.loadThenNavigate,
+                                action: RootAction.loadThenNavigate
+                            )
                         )
                         )
                     }// Navigation
@@ -99,8 +110,3 @@ struct RootView: View {
     }
 }
 
-//struct RootView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RootView()
-//    }
-//}

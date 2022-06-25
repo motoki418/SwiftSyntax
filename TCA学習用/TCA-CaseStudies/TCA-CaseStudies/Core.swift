@@ -11,6 +11,7 @@ import UIKit
 import XCTestDynamicOverlay
 
 struct RootState {
+    var alertAndConfirmationDialog = AlertAndConfirmationDialogState()
     var counter = CounterState()
     var twoCounters = TwoCounterState()
     var bindingBasics = BindingBasicsState()
@@ -22,6 +23,7 @@ struct RootState {
 }
 
 enum RootAction {
+    case alertAndConfimatinDialog(AlertAndConfirmationDialogAction)
     case counter(CounterAction)
     case twoCounters(TwoCountersAction)
     case bindingsBasics(BindingBaseicsAction)
@@ -52,6 +54,12 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 return .none
             }
         },
+        alertAndCofirmationDialogRedcer
+            .pullback(
+                state: \.alertAndConfirmationDialog,
+                action: /RootAction.alertAndConfimatinDialog,
+                environment: { _ in .init() }
+            ),
         counterReducer
             .pullback(
                 state: \.counter,

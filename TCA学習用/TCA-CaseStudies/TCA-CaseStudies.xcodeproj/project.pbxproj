@@ -16,6 +16,7 @@
 		365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDF828603DD700DD993C /* Bindings-Forms.swift */; };
 		365FEDFB28604D1100DD993C /* OptionalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDFA28604D1000DD993C /* OptionalState.swift */; };
 		366AFD1028644FD600A3607B /* LoadThenNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366AFD0F28644FD600A3607B /* LoadThenNavigation.swift */; };
+		369073612867308F00E059E8 /* AlertsAndConfirmationDialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369073602867308E00E059E8 /* AlertsAndConfirmationDialogs.swift */; };
 		36B17F712862E7AE0040423D /* SharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17F702862E7AE0040423D /* SharedState.swift */; };
 		36B17F732862F97D0040423D /* NavigateAndLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17F722862F97D0040423D /* NavigateAndLoad.swift */; };
 		36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C81773285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift */; };
@@ -32,6 +33,7 @@
 		365FEDF828603DD700DD993C /* Bindings-Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bindings-Forms.swift"; sourceTree = "<group>"; };
 		365FEDFA28604D1000DD993C /* OptionalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalState.swift; sourceTree = "<group>"; };
 		366AFD0F28644FD600A3607B /* LoadThenNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadThenNavigation.swift; sourceTree = "<group>"; };
+		369073602867308E00E059E8 /* AlertsAndConfirmationDialogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsAndConfirmationDialogs.swift; sourceTree = "<group>"; };
 		36B17F702862E7AE0040423D /* SharedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedState.swift; sourceTree = "<group>"; };
 		36B17F722862F97D0040423D /* NavigateAndLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateAndLoad.swift; sourceTree = "<group>"; };
 		36C81770285D4BBF000C9CE4 /* TCA-CaseStudies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TCA-CaseStudies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,7 @@
 				36B17F722862F97D0040423D /* NavigateAndLoad.swift */,
 				366AFD0F28644FD600A3607B /* LoadThenNavigation.swift */,
 				36B17F702862E7AE0040423D /* SharedState.swift */,
+				369073602867308E00E059E8 /* AlertsAndConfirmationDialogs.swift */,
 				365FEDED285D502700DD993C /* RootView.swift */,
 				365FEDEF285D504400DD993C /* Core.swift */,
 				36C81777285D4BC1000C9CE4 /* Assets.xcassets */,
@@ -178,6 +181,7 @@
 				365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */,
 				365FEDF2285D505200DD993C /* Two-Counters.swift in Sources */,
 				365FEDF0285D504400DD993C /* Core.swift in Sources */,
+				369073612867308F00E059E8 /* AlertsAndConfirmationDialogs.swift in Sources */,
 				365FEDFB28604D1100DD993C /* OptionalState.swift in Sources */,
 				36B17F712862E7AE0040423D /* SharedState.swift in Sources */,
 				365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */,

@@ -20,6 +20,7 @@ struct RootState {
     var navigateAndLoad = NavigateAndLoadState()
     var loadThenNavigate = LoadThenNavigateState()
     var shared = SharedState()
+    var effectsBasics = EffectsBasicsState()
 }
 
 enum RootAction {
@@ -32,13 +33,16 @@ enum RootAction {
     case navigateAndLoad(NavigatiteAndLoadAction)
     case loadThenNavigate(LoadThenNavigateAction)
     case shared(SharedStateAction)
+    case effectsBasics(EffectsBasicsAction)
     case onAppear
 }
 
 struct RootEnvironment {
+    var fact: FactClient
     var mainQueue: AnySchedulerOf<DispatchQueue>
 
     static let live = Self(
+        fact: .live,
         mainQueue: .main
     )
 }
@@ -98,6 +102,19 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 action: /RootAction.optionalBasics,
                 environment: { _ in .init() }
             ),
+        sharedStateReducer
+            .pullback(
+                state: \.shared,
+                action: /RootAction.shared,
+                environment: { _ in () }
+            ),
+        effectsBasicsReducer
+            .pullback(
+                state: \.effectsBasics,
+                action: /RootAction.effectsBasics,
+                environment: { .init(
+                    fact: $0.fact, mainQueue: $0.mainQueue) }
+            ),
         navigateAndLoadReducer
             .pullback(
                 state: \.navigateAndLoad,
@@ -109,12 +126,6 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 state: \.loadThenNavigate,
                 action: /RootAction.loadThenNavigate,
                 environment: { .init(mainQueue: $0.mainQueue) }
-            ),
-        sharedStateReducer
-            .pullback(
-                state: \.shared,
-                action: /RootAction.shared,
-                environment: { _ in () }
             )
     )
 // .debug()でデバッグできる

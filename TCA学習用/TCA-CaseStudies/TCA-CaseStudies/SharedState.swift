@@ -214,7 +214,7 @@ struct SharedStateCounterView: View {
                         Button {
                             viewStore.send(.decrementButtonTapped)
                         } label: {
-                            Text("Alert")
+                            Text("-")
                         }// - Button
 
                         Text("\(viewStore.count)")

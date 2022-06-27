@@ -36,6 +36,16 @@ struct RootView: View {
                         )
 
                         NavigationLink(
+                            "Three counter",
+                            destination: ThreeCounterView(
+                                store: self.store.scope(
+                                    state: \.threeCounters,
+                                    action: RootAction.threeCouters
+                                )
+                            )
+                        )
+
+                        NavigationLink(
                             "Bindings",
                             destination: BindingsBasicsView(
                                 store: self.store.scope(
@@ -93,6 +103,13 @@ struct RootView: View {
                                 )
                             )
                         )
+
+                        NavigationLink(
+                            "Cancellation",
+                            destination: EffectsCancellationView(
+                                store: self.store.scope(
+                                    state: \.effectsCancellation,
+                                    action: RootAction.effectsCancellation)))
                     }
 
                     Section(header: Text("Navigation")) {

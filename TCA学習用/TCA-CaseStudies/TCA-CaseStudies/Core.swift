@@ -14,6 +14,7 @@ struct RootState {
     var alertAndConfirmationDialog = AlertAndConfirmationDialogState()
     var counter = CounterState()
     var twoCounters = TwoCounterState()
+    var threeCounters = ThreeCounterStete()
     var bindingBasics = BindingBasicsState()
     var bindingForm = BindingFormState()
     var optionalBasics = OptionalBasicsState()
@@ -21,12 +22,14 @@ struct RootState {
     var loadThenNavigate = LoadThenNavigateState()
     var shared = SharedState()
     var effectsBasics = EffectsBasicsState()
+    var effectsCancellation = EffectsCancellationState()
 }
 
 enum RootAction {
     case alertAndConfimatinDialog(AlertAndConfirmationDialogAction)
     case counter(CounterAction)
     case twoCounters(TwoCountersAction)
+    case threeCouters(ThreeCounerAction)
     case bindingsBasics(BindingBaseicsAction)
     case bindingForm(BindingFormAction)
     case optionalBasics(OptionalBasicsAction)
@@ -34,6 +37,7 @@ enum RootAction {
     case loadThenNavigate(LoadThenNavigateAction)
     case shared(SharedStateAction)
     case effectsBasics(EffectsBasicsAction)
+    case effectsCancellation(EffectsCancellationAction)
     case onAppear
 }
 
@@ -76,6 +80,12 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 action: /RootAction.twoCounters,
                 environment: { _ in .init() }
             ),
+        threeCounterReducer
+            .pullback(
+                state: \.threeCounters,
+                action: /RootAction.threeCouters,
+                environment: { _ in .init() }
+            ),
         bindingBasicsReducer
             .pullback(
                 state: \.bindingBasics,
@@ -114,6 +124,14 @@ let rootReducer = Reducer<RootState, RootAction, RootEnvironment>
                 action: /RootAction.effectsBasics,
                 environment: { .init(
                     fact: $0.fact, mainQueue: $0.mainQueue) }
+            ),
+        effectsCancellationReducer
+            .pullback(
+                state: \.effectsCancellation,
+                action: /RootAction.effectsCancellation,
+                environment: { .init(
+                    fact: $0.fact,
+                    mainQueue: $0.mainQueue) }
             ),
         navigateAndLoadReducer
             .pullback(

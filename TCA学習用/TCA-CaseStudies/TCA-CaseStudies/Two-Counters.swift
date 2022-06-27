@@ -123,7 +123,7 @@ struct TwoCountersView: View {
                 }// HStack
             }// Section
         }// Form
-        .navigationTitle("Two counter demo")
+        .navigationTitle("Two Counter Demo")
     }
 }
 

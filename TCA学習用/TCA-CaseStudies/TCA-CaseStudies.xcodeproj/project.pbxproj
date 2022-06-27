@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		365081502868741B005F159D /* Effects-Basics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650814F2868741B005F159D /* Effects-Basics.swift */; };
 		36508154286875E8005F159D /* FactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36508153286875E8005F159D /* FactClient.swift */; };
+		365081DC28697911005F159D /* Effects-Cancellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365081DB28697911005F159D /* Effects-Cancellation.swift */; };
+		365081DE28698AC0005F159D /* Three-Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365081DD28698AC0005F159D /* Three-Counter.swift */; };
 		365FEDEC285D4FFB00DD993C /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDEB285D4FFB00DD993C /* Counter.swift */; };
 		365FEDEE285D502700DD993C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDED285D502700DD993C /* RootView.swift */; };
 		365FEDF0285D504400DD993C /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FEDEF285D504400DD993C /* Core.swift */; };
@@ -30,6 +32,8 @@
 		3650814F2868741B005F159D /* Effects-Basics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effects-Basics.swift"; sourceTree = "<group>"; };
 		36508153286875E8005F159D /* FactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactClient.swift; sourceTree = "<group>"; };
 		3650815528689263005F159D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		365081DB28697911005F159D /* Effects-Cancellation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effects-Cancellation.swift"; sourceTree = "<group>"; };
+		365081DD28698AC0005F159D /* Three-Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Three-Counter.swift"; sourceTree = "<group>"; };
 		365FEDEB285D4FFB00DD993C /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		365FEDED285D502700DD993C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		365FEDEF285D504400DD993C /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
@@ -87,9 +91,11 @@
 				365FEDF828603DD700DD993C /* Bindings-Forms.swift */,
 				365FEDEB285D4FFB00DD993C /* Counter.swift */,
 				365FEDF1285D505200DD993C /* Two-Counters.swift */,
+				365081DD28698AC0005F159D /* Three-Counter.swift */,
 				365FEDFA28604D1000DD993C /* OptionalState.swift */,
 				36B17F702862E7AE0040423D /* SharedState.swift */,
 				3650814F2868741B005F159D /* Effects-Basics.swift */,
+				365081DB28697911005F159D /* Effects-Cancellation.swift */,
 				36B17F722862F97D0040423D /* NavigateAndLoad.swift */,
 				366AFD0F28644FD600A3607B /* LoadThenNavigation.swift */,
 				36508153286875E8005F159D /* FactClient.swift */,
@@ -186,6 +192,7 @@
 				365FEDEC285D4FFB00DD993C /* Counter.swift in Sources */,
 				36C81774285D4BBF000C9CE4 /* TCA_CaseStudiesApp.swift in Sources */,
 				36B17F732862F97D0040423D /* NavigateAndLoad.swift in Sources */,
+				365081DE28698AC0005F159D /* Three-Counter.swift in Sources */,
 				365FEDF4285D761B00DD993C /* Bindings-Basic.swift in Sources */,
 				365081502868741B005F159D /* Effects-Basics.swift in Sources */,
 				365FEDF2285D505200DD993C /* Two-Counters.swift in Sources */,
@@ -195,6 +202,7 @@
 				36B17F712862E7AE0040423D /* SharedState.swift in Sources */,
 				365FEDF928603DD700DD993C /* Bindings-Forms.swift in Sources */,
 				36508154286875E8005F159D /* FactClient.swift in Sources */,
+				365081DC28697911005F159D /* Effects-Cancellation.swift in Sources */,
 				366AFD1028644FD600A3607B /* LoadThenNavigation.swift in Sources */,
 				365FEDEE285D502700DD993C /* RootView.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 // The Composable Architecture（TCA）でアクションシート（Action Sheet）を実装する方法
 // https://bamboo-hero.com/entry/tca-action-sheet
 // [SwiftUI]TCAを理解する：Alert/Dialog
-// https://zenn.dev/chiii/articles/47fe0b35152cd0
+// https://zenn.dev/chiii/articles/5f59087a0d8216
 
 import ComposableArchitecture
 import SwiftUI
@@ -58,7 +58,7 @@ let alertAndCofirmationDialogRedcer = Reducer<AlertAndConfirmationDialogState, A
 
     case .alertButtonTapped:
         // 画面上の「Alert」ボタンをタップするとalertButtonTappedアクションが送信され、
-        //Reducerがstate.alertにAlertStateのインスタンスをセットします。
+        // Reducerがstate.alertにAlertStateのインスタンスをセットします。
         // これでアラートが画面に表示されます。
         // AlertStateは.init()でも良い。
         state.alert = AlertState(
@@ -71,7 +71,7 @@ let alertAndCofirmationDialogRedcer = Reducer<AlertAndConfirmationDialogState, A
             secondaryButton: .default(TextState("increment"), action: .send(.incrementButtonTapped))
         )
         return .none
-        // Alertをから戻る際の挙動では、alertDismissedというアクションを送ることで、        Alertが消えるようになります。
+        // Alertをから戻る際の挙動では、alertDismissedというアクションを送ることで、   Alertが消えるようになります。
         // state.alert = nilでAlertが消えるようになる。
     case .alertDismissed:
         state.alert = nil

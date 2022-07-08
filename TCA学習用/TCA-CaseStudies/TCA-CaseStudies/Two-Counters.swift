@@ -85,7 +85,9 @@ let twoCountersReducer = Reducer<TwoCounterState, TwoCountersAction,
 // CounterViewが扱うStateをTwoCountersStateではなくCounterStateにすることで、
 // CounterViewが上位の画面の状態を変更してしまう可能性を排除しています。
 struct TwoCountersView: View {
+    
     let store: Store<TwoCounterState, TwoCountersAction>
+    
     var body: some View {
         Form {
             Section(header: Text(readMe)) {
@@ -95,7 +97,7 @@ struct TwoCountersView: View {
                     CounterView(
                         // CounterViewのイニシャライザはStoreインスタンスを要求しますが、
                         // ここで渡すStoreが扱うStateをCounterStateに変換します。
-                        // Store.scope(state:action:)は指定されたState、Actionの型に対応した、
+                        // store.scope(state:action:)は指定されたState、Actionの型に対応した、
                         // Storeインスタンスを新たに生成して返すメソッドです。
                         store:self.store.scope(
                             state:\.counter1,

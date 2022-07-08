@@ -7,6 +7,8 @@
 // 参考文献
 // [SwiftUI]TCAを理解する：Effect
 // https://zenn.dev/chiii/articles/e43ebc5c77286a
+// Numbers API を利用した実践的なアプリで学ぶ SwiftUI(UIKit) + TCA
+// https://qiita.com/kalupas226/items/fb67003d43df8ad057f7#environment
 
 import Combine
 import ComposableArchitecture

@@ -7,6 +7,8 @@
 // 参考文献
 // The Composable Architecture（TCA）でアクションシート（Action Sheet）を実装する方法
 // https://bamboo-hero.com/entry/tca-action-sheet
+// The Composable Architecture（TCA）でアラート（Alert）を実装する方法
+// https://bamboo-hero.com/entry/tca-alert
 // [SwiftUI]TCAを理解する：Alert/Dialog
 // https://zenn.dev/chiii/articles/5f59087a0d8216
 
@@ -121,6 +123,7 @@ struct AlertAndConfirmationDialogView: View {
         WithViewStore(self.store) { viewStore in
             Form {
                 Section(header: Text(readMe)) {
+
                     Text("Count: \(viewStore.count)")
 
                     Button {

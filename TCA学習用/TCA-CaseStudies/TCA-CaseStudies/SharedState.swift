@@ -39,12 +39,6 @@ struct SharedState: Equatable {
         var minCount = 0
         var numberOfCounts = 0
     }
-    // profileはComputed Propertyで実装されています。
-    // getterではProfileStateを毎回生成して返しています。
-    // ProfileStateのイニシャライザにはCounterStateのプロパティの値を渡しています。
-    // counterとprofileでそれぞれ個別にStored Propertyで実装されていると、
-    // Reducerで2つのStateを同期する処理を書く必要がありますが、
-    // このような実装をすることで自動で状態を同期することができます。
     var profile: ProfileState {
         get {
             ProfileState(
@@ -57,10 +51,6 @@ struct SharedState: Equatable {
         }
         set {
             self.currentTab = newValue.currentTab
-            // ポイントとしてはProfileStateで1つcountという値を例に挙げると、
-            // self.counter.countこのようにCounterStateから参照していることで、
-            // CounterStateの値が更新されることで、
-            // ProfileStateのcountなどの値も更新されるようになっています。
             self.counter.count = newValue.count// ポイント
             self.counter.maxCount = newValue.maxCount
             self.counter.minCount = newValue.minCount

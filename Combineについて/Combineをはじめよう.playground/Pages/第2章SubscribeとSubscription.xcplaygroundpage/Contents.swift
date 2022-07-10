@@ -19,7 +19,6 @@ final class Receiver {
 }
 
 let receiver = Receiver()
-//
 subject.send("あ")
 subject.send("い")
 subject.send("う")
@@ -45,7 +44,6 @@ final class Receiver1 {
 }
 
 let receiver1 = Receiver1()
-//
 subject1.send("か")
 subject1.send("き")
 subject1.send("く")

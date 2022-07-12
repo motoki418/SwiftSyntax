@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' executeOnSourceChanges='true' importAppTypes='true'>
+    <pages>
+        <page name='第三章 Subscriptionとは何か'/>
+        <page name='第二章 Combineの全体像'/>
+    </pages>
+</playground>

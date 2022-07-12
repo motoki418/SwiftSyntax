@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' executeOnSourceChanges='true' importAppTypes='true'>
+    <pages>
+        <page name='#1 本気で学ぶSwift講座Ⅲ【引数の外部名と内部名】'/>
+        <page name='#6 本気で学ぶSwift講座Ⅲ【型と様々なプロパティ】'/>
+        <page name='#7 本気で学ぶSwift講座Ⅲ【プロパティオブザーバ】'/>
+    </pages>
+</playground>

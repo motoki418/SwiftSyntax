@@ -11,6 +11,9 @@
         <page name='列挙型(Enumerations)'/>
         <page name='クロージャ(Closures)'/>
         <page name='構造体とクラス'/>
-        <page name='プロパティ(Properties).xcplaygroundpage'/>
+        <page name='プロパティ(Properties)'/>
+        <page name='メソッド'/>
+        <page name='継承'/>
+        <page name='サブスクリプト'/>
     </pages>
 </playground>

@@ -3,6 +3,7 @@
     <pages>
         <page name='#1 本気で学ぶSwift講座Ⅲ【引数の外部名と内部名】'/>
         <page name='#6 本気で学ぶSwift講座Ⅲ【型と様々なプロパティ】'/>
-        <page name='#7 本気で学ぶSwift講座Ⅲ【プロパティオブザーバ】'/>
+        <page name='#7 本気で学ぶSwift講座Ⅲ【プロパティオブザーバ】'/>
+        <page name='#5 本気で学ぶSwift講座Ⅲ【guardとguard let】'/>
     </pages>
 </playground>

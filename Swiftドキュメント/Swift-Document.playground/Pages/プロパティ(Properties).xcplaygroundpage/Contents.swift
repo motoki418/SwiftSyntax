@@ -71,7 +71,7 @@ struct Rect {
             return Point(x: centerX, y: centerY)
         }
         // プロパティに値を代入すると動く
-        set(newCenter){// setter
+        set(newCenter) {// setter
             origin.x = newCenter.x - (size.width / 2)
             origin.y = newCenter.y - (size.height / 2)
             
@@ -99,7 +99,7 @@ struct AlternativeRect {
             return Point(x: centerX, y: centerY)
         }
         /* 引数名を指定しない場合は、デフォルト名のnewValueが使用できる。
-         上記のRect構造体のcenterプロパティのsetのnewCenterと同じ扱いになる。*/
+         上記のRect構造体のcenterプロパティのsetのnewCenterと、newValueは同じ扱いになる。*/
         set {
             origin.x = newValue.x - (size.width / 2)
             origin.y = newValue.y - (size.height / 2)
@@ -109,7 +109,7 @@ struct AlternativeRect {
 
 
 // 省略プロパティ　get宣言
-// get の本文全体が単一式の場合、暗黙的にその式を返す。
+// getの本文全体が単一式の場合、暗黙的にその式を返す。
 // 関数の本文が単一式の場合にreturnを省略できるのと同じ意味
 struct CompactRect {
     var origin = Point()
@@ -132,7 +132,7 @@ struct Cuboid {
     var width = 0.0
     var height = 0.0
     var depth = 0.0
-    // get キーワードとその中括弧({})を削除することで、
+    // get ーワードとその中括弧({})を削除することで、
     // 読み取り専用計算プロパティの宣言ができる。
     var volume: Double {
         return width * height * depth

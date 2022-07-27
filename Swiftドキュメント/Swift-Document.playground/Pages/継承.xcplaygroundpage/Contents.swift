@@ -58,4 +58,60 @@ print("Tandem: \(tandem.description)")
 
 
 // オーバーライド
+// スーパークラスのプロパティやメソッドの上書きができる機能
 
+// メソッドのオーバーライド
+class Train: Vehicle {
+    // スーパークラスVehicleのmakeNoise()の処理を上書き
+    override func makeNoise() {
+        print("Choo Choo")
+    }
+}
+let vehicle = Vehicle()
+vehicle.makeNoise()// 処理を記述していないので何も行われない
+let train = Train()
+train.makeNoise()
+
+// プロパティのオーバーライド
+class Car: Vehicle {
+    var gear = 1
+    override var description: String {
+        // super.descriptionでスーパークラスのdescriptionを呼び出す
+        return super.description + " in gear \(gear)"
+    }
+}
+
+let car = Car()
+car.currentSpeed = 25.0
+car.gear = 3
+print("Car: \(car.description)")
+// Car: traveling at 25.0 miles per hour in gear 3
+/*
+ 出力されたCar: traveling at 25.0 miles per
+ hourはスーパークラスVehicleで定義されているdescriptionに書かれている処理、
+ in gear 3はサブクラスCarで定義されているdescriptionに書かれている処理
+*/
+
+/*
+ AutomaticCarクラスは、現在の速度に基づいて使用する適切なギアを、
+ 自動的に選択するオートマ車を表す
+*/
+ class AutomaticCar: Car {
+    override var currentSpeed: Double {
+        didSet {
+            // gearはCarクラスのgearプロパティを指している
+            gear = Int(currentSpeed / 10) + 1
+        }
+    }
+}
+let automatic = AutomaticCar()
+automatic.currentSpeed = 35.0
+print("AutomaticCar: \(automatic.description)")// ギアを4に入れる
+automatic.currentSpeed = 51.0
+print("AutomaticCar: \(automatic.description)")// ギアを6に入れる
+
+/*
+ final修飾子をメソッド、プロパティ、またはsubscriptのキーワードの前に
+ 記述することで、オーバーライドを禁止する事ができる。
+ また、classキーワードの前にfinal修飾子を記述することでfinalクラスをサブクラス化することを禁止する事ができる。
+*/
